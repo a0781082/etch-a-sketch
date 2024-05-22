@@ -1,0 +1,35 @@
+* {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    margin: auto;
+}
+
+.worksheet {
+    display: flex;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    border: 2px solid black;
+    align-content: center;
+    width: 379px;
+    height: 429px;
+    background-color: lightgray;
+}
+
+.wsPixel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 1px solid lightpink;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    margin: 0px;
+    font-size: 5vmin;
+}
+
+.hide {
+    display: none;
+}

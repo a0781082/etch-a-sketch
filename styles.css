@@ -1,0 +1,33 @@
+* {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    margin: auto;
+    text-align: center;
+}
+
+.canvass {
+    margin: auto;
+    display: flex;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    border: 2px solid black;
+    align-content: center;
+    background-color: lightgray;
+}
+
+.myPixel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 1px solid lightpink;
+    text-align: center;
+    margin: 0px;
+    font-size: 5vmin;
+}
+
+.hide {
+    display: none;
+}
