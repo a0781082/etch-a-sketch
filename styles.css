@@ -4,7 +4,7 @@
 }
 
 .container {
-    width: 80%;
+    width: 1100px;
     margin: auto;
     text-align: center;
     background-color: dodgerblue;
@@ -18,7 +18,7 @@
     flex-wrap: wrap;
     border: 2px solid black;
     align-content: center;
-    background-color: lightgray;
+    background-color: white;
 }
 
 .myPixel {
@@ -51,10 +51,10 @@
 }
 
 .buttons {
-    width: 100%;
+    margin: auto;
+    width: 1000px;
     background-color: lightgoldenrodyellow;
     border: 2px solid black;
-    padding: 2%;
 }
 
 .button {

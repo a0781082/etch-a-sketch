@@ -1,14 +1,15 @@
-var canvassWidth = 100;
-var canvassHeight = 100;
+var canvassWidth = 5;
+var canvassHeight = 5;
 var canvassBorder = 2;
 var canvassTopPad = 10;
-var pixelSide = 5;
+var pixelSide = 10;
 var pixelBorder = 0;
 var divId;
 var newPixel;
 var modulo;
 var eraseButton
 var changeButton
+var maxScreenResolution = 1000
 
 window.onload = function () {
     //initialise the drawing canvass
@@ -23,12 +24,24 @@ window.onload = function () {
     document.getElementById("erase").style.width = buttonWidth;
 
     //add eventlisteners to buttons to listen for clicks
-    eraseButton.addEventListener("click", function (erase) {
+    eraseButton.addEventListener("click", function () {
         clearCanvass();
-    })
+    });
+
+    changeButton.addEventListener("click", function () {
+        adjustResolution();
+    });
 }
 
 function createCanvass() {
+    //set and keep the canvass size to 1000x1000 pixels
+    //limit the maximum cells to 100x100 and the minimum to 5x5 and adjust the cell size accordingly
+    // ==> calculate pixelSide to ensure the fit
+    if (canvassWidth >= 5 && canvassWidth <=100) {
+        pixelSide = 1000 / canvassWidth
+    }
+
+
     //set the page size for the sketch
     $(".canvass").width((canvassWidth * (pixelSide + (pixelBorder * 2))) + (canvassBorder * 2));
     $(".canvass").height((canvassHeight * (pixelSide + (pixelBorder * 2))) + ((canvassBorder * 2) + canvassTopPad));
@@ -91,5 +104,29 @@ function clearCanvass() {
     let myPixels = canvass.querySelectorAll('.myPixel');
     myPixels.forEach(function(div) {
         div.classList.remove("draw")
+        })   
+}
+
+function adjustResolution() {
+    let cachedCanvassWidth = canvassWidth;
+    canvassWidth = prompt("Please enter the new resolution (the minimum is 5 and the maximum is 100): ");
+    if (canvassWidth >= 5 && canvassWidth <=100) {
+        pixelSide = 1000 / canvassWidth;
+        canvassHeight = canvassWidth;
+        //number is in a valid range so remove the existing canvass and create a new one...
+        removeCanvass();
+        createCanvass();
+    } else {
+        //reset to valid values in case of cancel
+        canvassWidth = cachedCanvassWidth;
+        adjustResolution();
+    }
+}
+
+function removeCanvass() {
+    let canvass = document.getElementById("canvass");
+    let myPixels = canvass.querySelectorAll('.myPixel');
+    myPixels.forEach(function(div) {
+        div.remove();
         })   
 }
