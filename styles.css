@@ -4,8 +4,11 @@
 }
 
 .container {
+    width: 80%;
     margin: auto;
     text-align: center;
+    background-color: dodgerblue;
+    color: aliceblue;
 }
 
 .canvass {
@@ -26,12 +29,54 @@
     text-align: center;
     margin: 0px;
     font-size: 5vmin;
+    border-style: none;
 }
 
 .draw {
-    background-color: red;
+    background-color: darkblue;
 }
 
 .hide {
     display: none;
+}
+
+.boxes {
+    display:block;
+    width: auto ;
+    height: auto ;
+    align-content: center;
+    text-align: center;
+    padding: 2%;
+    background-color: blue;
+}
+
+.buttons {
+    width: 100%;
+    background-color: lightgoldenrodyellow;
+    border: 2px solid black;
+    padding: 2%;
+}
+
+.button {
+    align-content: center;
+    text-align: center;
+    font-weight: bolder;
+    background-color: blue;
+    color: white;
+    border: 1px solid black ;
+    border-radius: 8%;
+    padding: 5px 10px;
+    font-size: 18px;
+    box-shadow: 3px;
+}
+
+.button:hover {
+    background-color: lightskyblue;
+    color: blue;
+}
+
+.button:active {
+    background-color: skyblue;
+    color: blue;
+    transform: translateY(4px);
 }

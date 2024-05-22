@@ -1,21 +1,37 @@
-var canvassWidth = 16;
-var canvassHeight = 16;
+var canvassWidth = 100;
+var canvassHeight = 100;
 var canvassBorder = 2;
 var canvassTopPad = 10;
-var pixelSide = 25;
-var pixelBorder = 1;
+var pixelSide = 5;
+var pixelBorder = 0;
 var divId;
 var newPixel;
 var modulo;
+var eraseButton
+var changeButton
 
 window.onload = function () {
+    //initialise the drawing canvass
     createCanvass();
+
+    //make the buttons the same size - just because ;-)
+    eraseButton = document.getElementById("erase");
+    changeButton = document.getElementById("resize");
+    let buttonRect = changeButton.getBoundingClientRect();
+    let buttonWidth = buttonRect.width + "px";
+    eraseButton.style.width = buttonWidth;
+    document.getElementById("erase").style.width = buttonWidth;
+
+    //add eventlisteners to buttons to listen for clicks
+    eraseButton.addEventListener("click", function (erase) {
+        clearCanvass();
+    })
 }
 
 function createCanvass() {
     //set the page size for the sketch
     $(".canvass").width((canvassWidth * (pixelSide + (pixelBorder * 2))) + (canvassBorder * 2));
-    $(".canvass").height((canvassHeight * (pixelSide + (pixelBorder *2))) + ((canvassBorder * 2) + canvassTopPad));
+    $(".canvass").height((canvassHeight * (pixelSide + (pixelBorder * 2))) + ((canvassBorder * 2) + canvassTopPad));
 
     for (let i = 0 ; i < ((canvassWidth * canvassHeight)) ; i++) {
         createDiv(i);
@@ -68,4 +84,12 @@ function createDiv(id) {
 
 function mouseOver(div) {
     document.getElementById(div.id).classList.add("draw");
+}
+
+function clearCanvass() {
+    let canvass = document.getElementById("canvass");
+    let myPixels = canvass.querySelectorAll('.myPixel');
+    myPixels.forEach(function(div) {
+        div.classList.remove("draw")
+        })   
 }
