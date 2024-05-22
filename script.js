@@ -1,8 +1,8 @@
-var canvassWidth = 5;
-var canvassHeight = 5;
+var canvassWidth = 50;
+var canvassHeight = 50;
 var canvassBorder = 2;
 var canvassTopPad = 10;
-var pixelSide = 10;
+var pixelSide = 20;
 var pixelBorder = 0;
 var divId;
 var newPixel;
@@ -60,6 +60,17 @@ function createCanvass() {
             mouseOver(div);
         })
     })
+
+
+    let canvassWidthElement = document.getElementById("canvassWidth");
+    canvassWidthElement.value = canvassWidth;
+
+    let canvassHeightElement = document.getElementById("canvassHeight");
+    canvassHeightElement.value = canvassHeight;
+
+    let pixelSideElement = document.getElementById("pixelSize");
+    pixelSide = 1000 / canvassWidth
+    pixelSideElement.value = pixelSide;
 }
 
 function createDiv(id) {

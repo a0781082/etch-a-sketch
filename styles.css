@@ -80,3 +80,11 @@
     color: blue;
     transform: translateY(4px);
 }
+
+.resolutionBox {
+    padding: 3%;
+    text-align: center;
+    align-content: center;
+    display: flex;
+    color: blue;
+}
