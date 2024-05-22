@@ -28,6 +28,10 @@
     font-size: 5vmin;
 }
 
+.draw {
+    background-color: red;
+}
+
 .hide {
     display: none;
 }

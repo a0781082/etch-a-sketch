@@ -16,10 +16,6 @@ function createCanvass() {
     //set the page size for the sketch
     $(".canvass").width((canvassWidth * (pixelSide + (pixelBorder * 2))) + (canvassBorder * 2));
     $(".canvass").height((canvassHeight * (pixelSide + (pixelBorder *2))) + ((canvassBorder * 2) + canvassTopPad));
-    
-    //set the 'pixel' size for the sketch
-    $(".myPixel").width(pixelSide);
-    $(".myPixel").height(pixelSide);
 
     for (let i = 0 ; i < ((canvassWidth * canvassHeight)) ; i++) {
         createDiv(i);
@@ -27,11 +23,22 @@ function createCanvass() {
 
     $(".myPixel").width(pixelSide);
     $(".myPixel").height(pixelSide);
+    
+    let canvass = document.getElementById("canvass");
+    let myPixels = canvass.querySelectorAll('.myPixel');
+    myPixels.forEach(function(div) {
+        div.addEventListener('mouseover', function() {
+            mouseOver(div);
+        })
+    })
 }
 
 function createDiv(id) {
+    // add the new 'pixel' to the canvass
     divId = "dv" + id;
     $("#canvass").append(`<div class="myPixel" id="${divId}"> </div>`);
+    
+    // set up the mouseover event to do the trace
     newPixel = document.getElementById(divId);
 
     //each pixel has a border of 1, so this means contiguous pixels have a border of 2 between them
@@ -57,4 +64,8 @@ function createDiv(id) {
         //bottom row
         newPixel.style.borderBottomWidth = 2 + "px";
     }
+}
+
+function mouseOver(div) {
+    document.getElementById(div.id).classList.add("draw");
 }
