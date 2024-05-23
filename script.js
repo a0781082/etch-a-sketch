@@ -10,6 +10,7 @@ var modulo;
 var eraseButton
 var changeButton
 var maxScreenResolution = 1000
+let opacityPercentage = 10
 
 window.onload = function () {
     //initialise the drawing canvass
@@ -108,6 +109,19 @@ function createDiv(id) {
 
 function mouseOver(div) {
     document.getElementById(div.id).classList.add("draw");
+    let red = Math.floor(Math.random() * 255);
+    let green = Math.floor(Math.random() * 255);
+    let blue = Math.floor(Math.random() * 255);
+    if (opacityPercentage < 100) {
+        opacityPercentage = opacityPercentage + 10
+    } else {
+        opacityPercentage = 10
+    }
+
+    let rgbColorStr = "rgb(" + red + ", " + green + ", " + blue + ")";
+    document.getElementById(div.id).style.backgroundColor = rgbColorStr;
+    let opacityPercentageStr = opacityPercentage + "%";
+    document.getElementById(div.id).style.opacity = opacityPercentageStr;
 }
 
 function clearCanvass() {

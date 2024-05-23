@@ -34,6 +34,7 @@
 
 .draw {
     background-color: darkblue;
+    opacity: 90%;
 }
 
 .hide {
@@ -82,9 +83,11 @@
 }
 
 .resolutionBox {
-    padding: 3%;
+    display: flex;
+    padding: 5px;
+    margin: 2px;
     text-align: center;
     align-content: center;
-    display: flex;
     color: blue;
+    border: 1px solid black;
 }
