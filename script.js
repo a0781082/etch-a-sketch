@@ -7,15 +7,15 @@ var pixelBorder = 0;
 var divId;
 var newPixel;
 var modulo;
-var eraseButton
-var changeButton
-var maxScreenResolution = 1000
-let opacityPercentage = 10
+var eraseButton;
+var changeButton;
+var maxScreenResolution = 1000;
+let opacityPercentage = 10;
+let initialCanvassColor = null;
 
 window.onload = function () {
     //initialise the drawing canvass
     createCanvass();
-
     //make the buttons the same size - just because ;-)
     eraseButton = document.getElementById("erase");
     changeButton = document.getElementById("resize");
@@ -81,6 +81,9 @@ function createDiv(id) {
     
     // set up the mouseover event to do the trace
     newPixel = document.getElementById(divId);
+    if (initialCanvassColor == null) {
+        initialCanvassColor = newPixel.style.backgroundColor;
+    }
 
     //each pixel has a border of 1, so this means contiguous pixels have a border of 2 between them
     //to balance this out make sure all the top, bottom, left and right pixels have a border of 2
@@ -128,7 +131,9 @@ function clearCanvass() {
     let canvass = document.getElementById("canvass");
     let myPixels = canvass.querySelectorAll('.myPixel');
     myPixels.forEach(function(div) {
-        div.classList.remove("draw")
+
+        div.style.backgroundColor = "white";
+
         })   
 }
 
