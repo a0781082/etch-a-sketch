@@ -4,11 +4,26 @@
 }
 
 .container {
+    display: block;
     width: 1100px;
     margin: auto;
     text-align: center;
+    align-content: center;
     background-color: dodgerblue;
-    color: aliceblue;
+    color: white;
+}
+
+.headerBox {
+    display: block;
+    margin: 0px;
+    width: auto ;
+    height: fit-content ;
+    align-content: center;
+    text-align: center;
+    font-family: fantasy;
+    font-size: 32px;
+    padding: 1%;
+    padding-bottom: 0%;
 }
 
 .canvass {
@@ -41,21 +56,39 @@
     display: none;
 }
 
-.boxes {
-    display:block;
-    width: auto ;
+.controlBox {
+    margin: auto;
+    display:flex;
+    width: 900px ;
     height: auto ;
     align-content: center;
     text-align: center;
-    padding: 2%;
-    background-color: blue;
+    font-family: fantasy;
+    font-size: 32px;
+    padding: 1%;
+    padding-bottom: 0%;
+    background-color: lightgray;
+    font-weight: bold;
 }
 
-.buttons {
+.buttonBox {
+    display: flex;
     margin: auto;
-    width: 1000px;
-    background-color: lightgoldenrodyellow;
-    border: 2px solid black;
+    width: 55%;
+    background-color: lightgray;
+    padding: 10px;
+}
+
+.infoBox {
+    display: inline-flexbox;
+    width: 45%;
+    padding: 5px;
+    margin: auto;
+    font-size: 18px;
+    text-align: center;
+    align-content: center;
+    font-weight: bold;
+    color: blue;
 }
 
 .button {
@@ -65,10 +98,11 @@
     background-color: blue;
     color: white;
     border: 1px solid black ;
-    border-radius: 8%;
-    padding: 5px 10px;
-    font-size: 18px;
+    border-radius: 5%;
+    padding: 3px 3px;
+    font-size: 24px;
     box-shadow: 3px;
+    margin: 3px;
 }
 
 .button:hover {
@@ -80,14 +114,4 @@
     background-color: skyblue;
     color: blue;
     transform: translateY(4px);
-}
-
-.resolutionBox {
-    display: flex;
-    padding: 5px;
-    margin: 2px;
-    text-align: center;
-    align-content: center;
-    color: blue;
-    border: 1px solid black;
 }

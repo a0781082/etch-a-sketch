@@ -13,23 +13,39 @@
   </head>
 
   <body class="container">
-    <header class="boxes">
-      <h1>Etch-a-Sketch</h1>
+
+    <header class="headerBox">
+      <a>Etch-a-Sketch</a>
     </header>
-    <div class="boxes">
-      <div class="boxes buttons">
-        <button class="button" id="erase">Erase Canvass</button>
-        <button class="button" id="resize">Change Density...</button>
-        <div class="resolutionBox">
-          <label for="canvassWidth">Current Canvass Width:</label>
-          <input class="resolutionBox" type="text" id="canvassWidth" value="50" readonly>
-          <label for="canvassHeight">Current Canvass Height:</label>
-          <input class="resolutionBox" type="text" id="canvassHeight" value="50" readonly>
-          <label for="pixelSize">Current Drawing Pixel Size:</label>
-          <input class="resolutionBox" type="text" id="pixelSize" value="20" readonly>
-        </div>  
+
+    <div class="controlBox">
+
+      <div class="controlBox buttonBox">
+        <button class="controlBox button" id="erase">Erase Canvass</button>
+        <button class="controlBox button" id="resize">Change Density...</button>
+        <button class="controlBox button" id="multiColor">Toggle MultiColour</button>
+        <button class="controlBox button" id="fading">Toggle Fading</button>
       </div>
-      <div class="canvass" id="canvass"></div>
+
+      <div class="controlBox infoBox">
+        <div>
+          <label class="controlBox infoBox" for="canvassWidth">Canvass Width</label>
+          <input class="controlBox infoBox" type="text" id="canvassWidth" value="50" style="border: 0;" readonly>
+        </div>
+        <div>
+          <label class="controlBox infoBox" for="canvassHeight">Canvass Height</label>
+          <input class="controlBox infoBox" type="text" id="canvassHeight" value="50" style="border: 0" readonly>
+        </div>
+        <div>
+          <label class="controlBox infoBox" for="pixelSize">Pixel Size</label>
+          <input class="controlBox infoBox" type="text" id="pixelSize" value="20"  style="border: 0" readonly>
+        </div>
+
+      </div>
+
     </div>
+
+    <div class="canvass" id="canvass"></div>
+
   </body>
 </html>

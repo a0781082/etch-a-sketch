@@ -9,9 +9,13 @@ var newPixel;
 var modulo;
 var eraseButton;
 var changeButton;
-var maxScreenResolution = 1000;
+var multiColorButton;
+var fadingButton;
+var maxScreenResolution = 875;
 let opacityPercentage = 10;
 let initialCanvassColor = null;
+let multiColor = false;
+let fading = false;
 
 window.onload = function () {
     //initialise the drawing canvass
@@ -19,6 +23,8 @@ window.onload = function () {
     //make the buttons the same size - just because ;-)
     eraseButton = document.getElementById("erase");
     changeButton = document.getElementById("resize");
+    multiColorButton = document.getElementById("multiColor");
+    fadingButton = document.getElementById("fading");
     let buttonRect = changeButton.getBoundingClientRect();
     let buttonWidth = buttonRect.width + "px";
     eraseButton.style.width = buttonWidth;
@@ -32,6 +38,22 @@ window.onload = function () {
     changeButton.addEventListener("click", function () {
         adjustResolution();
     });
+
+    multiColorButton.addEventListener("click", function () {
+        if (multiColor) {
+            multiColor = false;
+        } else {
+            multiColor = true;
+        }
+    });
+
+    fadingButton.addEventListener("click", function () {
+        if (fading) {
+            fading = false;
+        } else {
+            fading = true;
+        }
+    });
 }
 
 function createCanvass() {
@@ -39,7 +61,7 @@ function createCanvass() {
     //limit the maximum cells to 100x100 and the minimum to 5x5 and adjust the cell size accordingly
     // ==> calculate pixelSide to ensure the fit
     if (canvassWidth >= 5 && canvassWidth <=100) {
-        pixelSide = 1000 / canvassWidth
+        pixelSide = maxScreenResolution / canvassWidth
     }
 
 
@@ -70,7 +92,7 @@ function createCanvass() {
     canvassHeightElement.value = canvassHeight;
 
     let pixelSideElement = document.getElementById("pixelSize");
-    pixelSide = 1000 / canvassWidth
+    pixelSide = maxScreenResolution / canvassWidth
     pixelSideElement.value = pixelSide;
 }
 
@@ -112,19 +134,24 @@ function createDiv(id) {
 
 function mouseOver(div) {
     document.getElementById(div.id).classList.add("draw");
-    let red = Math.floor(Math.random() * 255);
-    let green = Math.floor(Math.random() * 255);
-    let blue = Math.floor(Math.random() * 255);
-    if (opacityPercentage < 100) {
-        opacityPercentage = opacityPercentage + 10
-    } else {
-        opacityPercentage = 10
+
+    if (multiColor) {
+        let red = Math.floor(Math.random() * 255);
+        let green = Math.floor(Math.random() * 255);
+        let blue = Math.floor(Math.random() * 255);
+        let rgbColorStr = "rgb(" + red + ", " + green + ", " + blue + ")";
+        document.getElementById(div.id).style.backgroundColor = rgbColorStr;
     }
 
-    let rgbColorStr = "rgb(" + red + ", " + green + ", " + blue + ")";
-    document.getElementById(div.id).style.backgroundColor = rgbColorStr;
-    let opacityPercentageStr = opacityPercentage + "%";
-    document.getElementById(div.id).style.opacity = opacityPercentageStr;
+    if (fading) {
+        if (opacityPercentage < 100) {
+            opacityPercentage = opacityPercentage + 10
+        } else {
+            opacityPercentage = 10
+        }
+        let opacityPercentageStr = opacityPercentage + "%";
+        document.getElementById(div.id).style.opacity = opacityPercentageStr;
+    }
 }
 
 function clearCanvass() {
@@ -141,7 +168,7 @@ function adjustResolution() {
     let cachedCanvassWidth = canvassWidth;
     canvassWidth = prompt("Please enter the new resolution (the minimum is 5 and the maximum is 100): ");
     if (canvassWidth >= 5 && canvassWidth <=100) {
-        pixelSide = 1000 / canvassWidth;
+        pixelSide = maxScreenResolution / canvassWidth;
         canvassHeight = canvassWidth;
         //number is in a valid range so remove the existing canvass and create a new one...
         removeCanvass();
